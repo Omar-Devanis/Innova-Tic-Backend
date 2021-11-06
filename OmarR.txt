@@ -1,6 +1,8 @@
 ++++++++++++++++++ Presentacion +++++++++++++++++++
 
 HOLA!
-Mi nombre es OMAR RODRIGUEZ, tengo 24 años y vivo BARRANQUILLA.
+Mi nombre es OMAR RODRIGUEZ.
+Tengo 24 años,
+Vivo BARRANQUILLA,
 
 Mi rol en el equipo es: Scrum Master
