@@ -1,5 +1,8 @@
 const mongoose=require("mongoose")
-const atlasUrl=""
+const dotenv=require("dotenv")
+
+dotenv.config({ path: "./.env"})
+const atlasUrl = process.env.DB_URL;
 
 try {
     mongoose.connect(
