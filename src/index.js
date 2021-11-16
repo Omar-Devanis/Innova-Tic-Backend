@@ -1,46 +1,106 @@
 const { ApolloServer, gql } = require('apollo-server');
+const dotenv = require('dotenv')
+dotenv.config();
+const { MongoClient } = require('mongodb');
+const {DB_URL, DB_NAME}=process.env;
+const bcrypt = require('bcryptjs')
+
 
 // A schema is a collection of type definitions (hence "typeDefs")
 // that together define the "shape" of queries that are executed against
 // your data.
 const typeDefs = gql`
-  # Comments in GraphQL strings (such as this one) start with the hash (#) symbol.
+type Query{
+  misProyectos:[proyectos!]!
+}
 
-  # This "Book" type defines the queryable fields for every book in our data source.
-  type Book {
-    title: String
-    author: String
+type user{
+    id: ID!
+    mail: String!
+    identificacion: String!
+    nombre: String!
+    password: String!
+    rol: String!
+
+}
+
+  type proyectos{
+    id: ID!
+    nombre: String!
+    objGenerales: String!
+    objEspecificos: String!
+    presupuesto: String!
+    fechaIni: String!
+    fechaFin: String!
+    user: [user!]!
   }
 
-  # The "Query" type is special: it lists all of the available queries that
-  # clients can execute, along with the return type for each. In this
-  # case, the "books" query returns an array of zero or more Books (defined above).
-  type Query {
-    books: [Book]
+  type Mutation{
+    singUp(input:SingUpInput):AuthUser!
+  }
+
+  input SingUpInput{
+    mail: String!
+    identificacion: String!
+    nombre: String!
+    password: String!
+    rol: String!
+  }
+
+  type AuthUser{
+    user:user!
+    token: String!
   }
 `;
-const books = [
-    {
-      title: 'The Awakening',
-      author: 'Kate Chopin',
-    },
-    {
-      title: 'City of Glass',
-      author: 'Paul Auster',
-    },
-  ];
+
+
 // Resolvers define the technique for fetching the types defined in the
 // schema. This resolver retrieves books from the "books" array above.
 const resolvers = {
-    Query: {
-      books: () => books,
-    },
-  };
+  Query: {
+    misProyectos: ()=> []
+  },
+
+Mutation: {
+  singUp: async(root, {input}, {db})=>{
+    const hashedPassword=bcrypt.hashSync(input.password)
+    const newUser={
+      ...input,
+      password:hashedPassword
+    }
+  const result= await db.collection("user").insertOne(newUser);
+  const userId=result.ops[0]
+  return{
+    userId,
+    token:"token",
+  }
+}
+},
+user:{
+  id:(root)=>{
+    return root.id;
+  }
+}
+}
 // The ApolloServer constructor requires two parameters: your schema
 // definition and your set of resolvers.
-const server = new ApolloServer({ typeDefs, resolvers });
 
-// The `listen` method launches a web server.
-server.listen().then(({ url }) => {
-  console.log(`🚀  Server ready at ${url}`);
-});
+  
+  const start= async() =>{
+    const client = new MongoClient(DB_URL, { useNewUrlParser: true, useUnifiedTopology: true });
+    await client.connect();
+    const db=client.db(DB_NAME)
+
+    const context={
+      db,
+    }
+
+    const server = new ApolloServer({ typeDefs, resolvers, context });
+
+    // The `listen` method launches a web server.
+    server.listen().then(({ url }) => {
+    console.log(`🚀  Server ready at ${url}`);
+    });
+  }
+  
+  start();
