@@ -1,4 +1,7 @@
 import { connect } from 'mongoose';
+import dotenv from "dotenv"
+
+dotenv.config({path:"./.env"})
 
 const conectarBD = async () => {
   return await connect(process.env.DATABASE_URL)
