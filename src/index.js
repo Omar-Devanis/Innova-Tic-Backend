@@ -66,7 +66,7 @@ Mutation: {
     const hashedPassword=bcrypt.hashSync(input.password)
     const newUser={
       ...input,
-      password:hashedPassword
+      password:hashedPassword,
     }
   const result= await db.collection("user").insertOne(newUser);
   const userId=result.ops[0]
@@ -95,12 +95,15 @@ user:{
       db,
     }
 
-    const server = new ApolloServer({ typeDefs, resolvers, context });
+   // The ApolloServer constructor requires two parameters: your schema
+  // definition and your set of resolvers.
+  const server = new ApolloServer({ typeDefs, resolvers, context});
 
-    // The `listen` method launches a web server.
-    server.listen().then(({ url }) => {
-    console.log(`🚀  Server ready at ${url}`);
-    });
+  // The `listen` method launches a web server.
+  server.listen().then(({ url }) => {
+  console.log(`🚀  Server ready at ${url}`);
+  });
+
   }
   
   start();
