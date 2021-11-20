@@ -36,15 +36,21 @@ type user{
   }
 
   type Mutation{
-    singUp(input:SingUpInput):AuthUser!
+    signUp(input:SignUpInput):AuthUser!
+    signIn(input:SignInInput):AuthUser!
   }
 
-  input SingUpInput{
+  input SignUpInput{
     mail: String!
     identificacion: String!
     nombre: String!
     password: String!
     rol: String!
+  }
+
+  input SignInInput{
+    mail: String!
+    password: String!
   }
 
   type AuthUser{
@@ -62,23 +68,36 @@ const resolvers = {
   },
 
 Mutation: {
-  singUp: async(root, {input}, {db})=>{
+  signUp: async(root, {input}, {db})=>{
     const hashedPassword=bcrypt.hashSync(input.password)
     const newUser={
       ...input,
       password:hashedPassword,
     }
   const result= await db.collection("user").insertOne(newUser);
-  const userId=result.ops[0]
+
   return{
-    userId,
+    user:newUser,
     token:"token",
   }
+},
+
+signIn: async(root, {input}, {db})=>{
+  const user= await db.collection("user").findOne({mail: input.mail})
+  const isPasswordCorrect = user && bcrypt.compareSync(input.password, user.password);
+  if(!user || !isPasswordCorrect){
+    throw new Error("Credenciales no son correctas");
+  }
+  return{
+    user,
+    token:"token"
+  }
 }
+
 },
 user:{
   id:(root)=>{
-    return root.id;
+    return root._id;
   }
 }
 }
