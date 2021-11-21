@@ -6,9 +6,9 @@ const {DB_URL, DB_NAME, JWT_SECRET}=process.env;
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
-const getToken = (user)=> jwt.sign({id: user.id}, JWT_SECRET, {expiresIn: "30 days"});
+const getToken = (user)=> jwt.sign({id: user._id}, JWT_SECRET, {expiresIn: "30 days"});
 const getUserFromToken = async (token, db)=>{
-  //if (!token) {return "OK"}
+  if (!token) {return "OK"}
   const tokenData =jwt.verify(token, JWT_SECRET);
   return await db.collection("user").findOne({_id: ObjectId(tokenData.id)})
 }
@@ -119,14 +119,37 @@ signIn: async(root, {input}, {db})=>{
   }
 },
 
-createTaskList: async(root,{title},{db, user})=> {}
+createTaskList: async(root,{title},{db, user})=> {
+  if(!user){console.log("No se encuentra autenticado, por favor inicie sesion.")}
+
+  const newTaskList={
+    title,
+    createdAt: new Date().toISOString(),
+    userIds:[user._id]
+  }
+  const result = await db.collection("TaskList").insertOne(newTaskList);
+  return newTaskList
+},
 
 },
 user:{
   id:(root)=>{
     return root._id;
   }
-}
+},
+
+TaskList:{
+  id:(root)=>{
+    return root._id;
+  },
+  progress: ()=>30,
+
+users: async ({userIds}, _, {db}) => Promise.all(
+  userIds.map((userIds) =>(
+    db.collection("user").findOne({_id:userIds})
+  ))
+)
+},
 }
 // The ApolloServer constructor requires two parameters: your schema
 // definition and your set of resolvers.
