@@ -8,7 +8,7 @@ const jwt = require('jsonwebtoken')
 
 const getToken = (user)=> jwt.sign({id: user.id}, JWT_SECRET, {expiresIn: "30 days"});
 const getUserFromToken = async (token, db)=>{
-  
+  //if (!token) {return "OK"}
   const tokenData =jwt.verify(token, JWT_SECRET);
   return await db.collection("user").findOne({_id: ObjectId(tokenData.id)})
 }
