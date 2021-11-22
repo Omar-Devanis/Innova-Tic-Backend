@@ -48,6 +48,7 @@ type user{
 
     createTaskList(title: String!): TaskList!
     updateTaskList(id:ID!, title:String!):TaskList!
+    deleteTaskList(id:ID!):Boolean!
   }
 
   input SignUpInput{
@@ -94,11 +95,12 @@ const resolvers = {
   },
 
   Query:{
-    myTaskList: async (_,__,{db, user}) =>{
-      if(!user){console.log("No se encuentra autenticado, por favor inicie sesion.")}
+    myTaskList: async (_,__,{db }) =>{
 
-      return await db.collection("TaskList").find({usersIds: user._id}).toArray();
-    }
+      return await db.collection("TaskList")
+                   .find()
+                   .toArray();
+    },
   },
 
 Mutation: {
@@ -150,7 +152,15 @@ updateTaskList: async(_,{id, title},{db, user})=>{
         }
   )
   return await db.collection("TaskList").findOne({_id:ObjectId(id)})
-}
+},
+
+deleteTaskList: async(_,{id},{db, user})=>{
+  if(!user){console.log("No se encuentra autenticado, por favor inicie sesion.")}
+
+  await db.collection("TaskList").remove({_id:ObjectId(id)});
+
+  return true;
+},
 
 },
 user:{
