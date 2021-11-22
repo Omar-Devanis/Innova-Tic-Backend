@@ -18,7 +18,7 @@ const getUserFromToken = async (token, db)=>{
 // your data.
 const typeDefs = gql`
 type Query{
-  misProyectos:[proyectos!]!
+  myTaskList:[TaskList!]!
 }
 
 type user{
@@ -47,6 +47,7 @@ type user{
     signIn(input:SignInInput):AuthUser!
 
     createTaskList(title: String!): TaskList!
+    updateTaskList(id:ID!, title:String!):TaskList!
   }
 
   input SignUpInput{
@@ -92,6 +93,14 @@ const resolvers = {
     misProyectos: ()=> []
   },
 
+  Query:{
+    myTaskList: async (_,__,{db, user}) =>{
+      if(!user){console.log("No se encuentra autenticado, por favor inicie sesion.")}
+
+      return await db.collection("TaskList").find({usersIds: user._id}).toArray();
+    }
+  },
+
 Mutation: {
   signUp: async(root, {input}, {db})=>{
     const hashedPassword=bcrypt.hashSync(input.password)
@@ -130,6 +139,18 @@ createTaskList: async(root,{title},{db, user})=> {
   const result = await db.collection("TaskList").insertOne(newTaskList);
   return newTaskList
 },
+
+updateTaskList: async(_,{id, title},{db, user})=>{
+  if(!user){console.log("No se encuentra autenticado, por favor inicie sesion.")}
+
+  const result = await db.collection("TaskList")
+        .updateOne({_id:ObjectId(id)
+        },{
+          $set:{title}
+        }
+  )
+  return await db.collection("TaskList").findOne({_id:ObjectId(id)})
+}
 
 },
 user:{
