@@ -1,19 +1,20 @@
 {
-  "name": "Innova-Tic-Backend",
+  "name": "innovatic",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/Omar-Devanis/Innova-Tic-Backend.git",
-  "author": "omar rodriguez <omardevanisrodriguez@gmail.com>",
   "license": "MIT",
-  "type": "module",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
+  "type": "module",
   "dependencies": {
-    "apollo-server": "^3.5.0",
+    "apollo-server-express": "^3.5.0",
     "express": "^4.17.1",
     "graphql": "^16.0.1",
-    "mongoose": "^6.0.12",
-    "nodemon": "^2.0.14"
+    "mongoose": "^6.0.13"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }
