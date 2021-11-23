@@ -5,6 +5,7 @@
   "repository": "https://github.com/Omar-Devanis/Innova-Tic-Backend.git",
   "author": "omar rodriguez <omardevanisrodriguez@gmail.com>",
   "license": "MIT",
+  
   "scripts": {
     "start": "ts-node index.ts"
   },
