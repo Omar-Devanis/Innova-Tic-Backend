@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 
 /* Conexion a la base de datos con mongoose */
 const conectarDB = async ()=>{
-    return await mongoose.connect('mongodb+srv://InnovaTic:feldos13@gestionproyectosinova.np4ma.mongodb.net/GestionProyectosInova?retryWrites=true&w=majority')
+    return await mongoose.connect('mongodb+srv://admin:<password>@cluster0.vamd2.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
     .then(()=>{
         console.log('Conexion Exitosa 🏍')
     }).catch(e => {

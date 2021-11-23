@@ -6,9 +6,15 @@ import { objetivoModel } from "./models/objetivo.js";
 const main = async ()=>{
     await conectarDB();
 
-    const usuario = userModel.find({
-        
+    await userModel.create({
+        correo:'cosme@gmail.com',
+        identificacion:'7856323',
+        nombre:'Cosme',
+        apellido:"Fulanito",
+        rol:"Estudiante",
+
     })
+    
 }
 
 main();
