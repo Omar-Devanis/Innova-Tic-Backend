@@ -36,18 +36,7 @@ const proyectSchema = new Schema ({
         type: Schema.Types.ObjectId,
         ref:userModel, //referencia al modelo de usuarios
         required:true
-    },
-    objetivos:[{
-        descripcion:{
-            type:String,
-            required:true
-        },
-        tipo:{
-            type:String,
-            enum:["General","Especifico"],
-            required:true
-        }
-    }]
+    }
 
 })
 

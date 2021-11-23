@@ -6,13 +6,14 @@ import { objetivoModel } from "./models/objetivo.js";
 const main = async ()=>{
     await conectarDB();
 
-    await userModel.create({
-        correo:'cosme@gmail.com',
-        identificacion:'7856323',
-        nombre:'Cosme',
-        apellido:"Fulanito",
-        rol:"Estudiante",
-
+    await objetivoModel.create({
+        nombre:'Blockchain',
+        presupuesto:300,
+        fechaInicio:'2021/11/06',
+        fechaFin:'2022/06/20',
+        estado:'Activo',
+        fase:'Iniciado',
+        lider:'619d5421a8f66f60acdfa9ab',
     })
     
 }

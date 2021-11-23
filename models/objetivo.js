@@ -12,6 +12,11 @@ const objetivoSchema = new Schema({
         type:String,
         enum:["General","Especifico"],
         required:true
+    },
+    proyecto:{
+        type:Schema.Types.ObjectId,
+        ref:proyectModel,
+        required:true
     }
 })
 
