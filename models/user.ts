@@ -2,36 +2,36 @@ import {Schema, model} from "mongoose";
 import {Enum_Rol} from "./enums";
 
 interface User{
-    correo: String;
-    identificacion: String;
-    nombre:String;
-    apellido:String;
+    correo: string;
+    identificacion: string;
+    nombre:string;
+    apellido:string;
     rol: Enum_Rol;
 }
 
 const userSchema = new Schema<User>({
     correo:{
-        type:String,
+        type: String,
         required: true,
     },
 
     identificacion:{
-        type:String,
+        type: String,
         required: true,
         unique: true
     },
 
     nombre:{
-        type:String,
+        type: String,
         required: true,
     },
 
     apellido:{
-        type:String,
+        type: String,
         required: true,
     },
     rol:{
-        type:String,
+        type: String,
         required: true,
         enum: Enum_Rol,
     },
