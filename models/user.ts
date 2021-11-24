@@ -17,14 +17,19 @@ const userSchema = new Schema<User>({
         unique: true,
         validate:{
             validator: (email) =>{
-                if(email.includes("@") && email.includes(".")) {
-                    return true;
-                }else{
-                    return false;
-                }
-            },
-            message: "El formato del correo no es valido.",
+                
+            }
+           
         },
+        // VALIDACION EMAIL RUSTICA
+        //validator: (email) =>{
+        //    if(email.includes("@") && email.includes(".")) {
+        //        return true;
+        //    }else{
+        //        return false;
+        //    }
+        //},
+        //message: "El formato del correo no es valido.",
     },
 
     identificacion:{
