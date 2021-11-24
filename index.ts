@@ -1,4 +1,4 @@
-import conectarBD from "./db/db.ts";
+import conectarBD from "./db/db";
 
 const main = async () => {
     await conectarBD()
