@@ -6,19 +6,19 @@ const main = async () => {
     await conectarBD()
    
     //CREACION DE USUARIOS
-    //await UserModel.create({
-    //    correo: "mozart1756@gmail.com",
-    //    identificacion: "1591",
-    //    nombre: "wolfgang",
-    //    apellido: "mozart",
-    //    rol: Enum_Rol.lider,
-    //})
-    //.then((u) =>{
-    //    console.log("Usuario creado", u);
-    //})
-    //.catch((e) => {
-    //    console.log("Error creando el usuario", e);
-    //});
+    await UserModel.create({
+        correo: "prueba1756@gmail.com",
+        identificacion: "1409",
+        nombre: "prueba",
+        apellido: "pepito",
+        rol: Enum_Rol.lider,
+    })
+    .then((u) =>{
+        console.log("Usuario creado", u);
+    })
+    .catch((e) => {
+        console.log("Error creando el usuario", e);
+    });
     
 //CODIGO PARA TRAER USUARIOS
    //await UserModel.find()
@@ -43,13 +43,13 @@ const main = async () => {
     //        console.log("Error actualizando", e);
     //    })
 
-    await UserModel.findOneAndDelete({ correo: "omar@gmail.com"})
-    .then((u) => {
-        console.log("Usuario eliminado", u);
-    })
-    .catch((e) => {
-        console.log("Error eliminando usuario", e)
-    })
+    //await UserModel.findOneAndDelete({ correo: "omar@gmail.com"})
+    //.then((u) => {
+    //    console.log("Usuario eliminado", u);
+    //})
+    //.catch((e) => {
+    //    console.log("Error eliminando usuario", e)
+    //})
 
 };
 
