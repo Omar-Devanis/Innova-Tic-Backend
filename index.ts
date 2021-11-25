@@ -7,27 +7,28 @@ import { ObjectId } from "mongoose";
 const main = async () => {
     await conectarBD()
 
-    await ProyectosModel.create({
-        nombre: "proyecto 1.2",
-        presupuesto: 234567,
-        fechaInicio: Date.now(),
-        fechaFin: new Date("2020/11/24"),
-        lider: "619e81c65bc835c3e857df07",
-        objetivos: [
-            { descripcion: "objeivo general", tipo: Enum_TipoObjetivo.general },
-            { descripcion: "objeivo especifico No 1", tipo: Enum_TipoObjetivo.especifico },
-            { descripcion: "objeivo general No 2", tipo: Enum_TipoObjetivo.especifico },
-        ],
-    })
-    .then((u) =>{
-        console.log("Proyecto creado", u);
-    })
-    .catch((e) => {
-        console.log("Error creando el proyecto", e);
-    });
+// CREACION DE PROYECTOS
+    //await ProyectosModel.create({
+    //    nombre: "proyecto 1.2",
+    //    presupuesto: 234567,
+    //    fechaInicio: Date.now(),
+    //    fechaFin: new Date("2020/11/24"),
+    //    lider: "619e81c65bc835c3e857df07",
+    //    objetivos: [
+    //        { descripcion: "objeivo general", tipo: Enum_TipoObjetivo.general },
+    //        { descripcion: "objeivo especifico No 1", tipo: Enum_TipoObjetivo.especifico },
+    //        { descripcion: "objeivo general No 2", tipo: Enum_TipoObjetivo.especifico },
+    //    ],
+    //})
+    //.then((u) =>{
+    //    console.log("Proyecto creado", u);
+    //})
+    //.catch((e) => {
+    //    console.log("Error creando el proyecto", e);
+    //});
 
-    const proyecto = await ProyectosModel.find({ nombre: "proyecto 1" }).populate("lider");
-    console.log("El proyecto es:", proyecto);
+    //const proyecto = await ProyectosModel.find({ nombre: "proyecto 1" }).populate("lider");
+    //console.log("El proyecto es:", proyecto);
    
     //CREACION DE USUARIOS
     //await UserModel.create({
