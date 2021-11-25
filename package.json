@@ -5,12 +5,14 @@
   "repository": "https://github.com/Omar-Devanis/Innova-Tic-Backend.git",
   "author": "omar rodriguez <omardevanisrodriguez@gmail.com>",
   "license": "MIT",
-  
   "scripts": {
     "start": "ts-node index.ts"
   },
   "dependencies": {
     "apollo-server": "^3.5.0",
+    "apollo-server-express": "^3.5.0",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "graphql": "^16.0.1",
     "mongoose": "^6.0.12",
