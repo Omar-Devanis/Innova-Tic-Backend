@@ -1,13 +1,13 @@
 import {Schema, model} from "mongoose";
-import { ProyectosModel } from "./project";
-import { UserModel } from "./user";
+import { ProyectosModel } from "../proyecto/proyecto";
+import { UserModel } from "../usuario/usuario";
 
 interface Avance{
     fecha: Date;
     descripcion: string;
-    observaciones:{string};
-    proyecto:Schema.Types.ObjectId;
-    creadoPor:Schema.Types.ObjectId;
+    observaciones: [string];
+    proyecto: Schema.Types.ObjectId;
+    creadoPor: Schema.Types.ObjectId;
     
 }
 
