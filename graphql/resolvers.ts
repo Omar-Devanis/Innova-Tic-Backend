@@ -59,6 +59,7 @@ const resolvers = {
                 estado: args.estado,
                 fase: args.fase,
                 lider: args.lider,
+                objetivos: args.objetivos,
             });
             return usuarioCreado;
         },

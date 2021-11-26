@@ -33,8 +33,13 @@ const typeDefs = gql`
     ESPECIFICO
   }
 
-  type Objetivos{ 
+  type Objetivo{ 
       _id: ID!
+      descripcion: String!
+      tipo: Enum_TipoObjetivo!
+  }
+
+  input crearObjetivo{
       descripcion: String!
       tipo: Enum_TipoObjetivo!
   }
@@ -48,7 +53,7 @@ const typeDefs = gql`
       estado: Enum_EstadoProyecto!
       fase: Enum_FaseProyecto!
       lider: Usuario!
-      objetivos:[Objetivos]
+      objetivos:[Objetivo]
   }
 
   type Usuario {
@@ -97,6 +102,7 @@ const typeDefs = gql`
       estado: Enum_EstadoProyecto!
       fase: Enum_FaseProyecto!
       lider: String!
+      objetivos: [crearObjetivo]
       ):Proyecto
   }
 `;
