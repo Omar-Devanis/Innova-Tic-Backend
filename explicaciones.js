@@ -1,7 +1,7 @@
-import {conectarBD} from "./db/db";
-import {UserModel} from "./models/usuario/usuario";
-import {Enum_Rol, Enum_TipoObjetivo} from "./models/enums/enums";
-import { ProyectosModel } from "./models/proyecto/proyecto";
+import {conectarBD} from "./db/db.js";
+import {UserModel} from "./models/usuario/usuario.js";
+import {Enum_Rol, Enum_TipoObjetivo} from "./models/enums/enums.js";
+import { ProyectosModel } from "./models/proyecto/proyecto.js";
 import { ObjectId } from "mongoose";
 
 const main = async () => {

@@ -1,4 +1,4 @@
-import { ProyectosModel } from "./proyecto";
+import { ProyectosModel } from "./proyecto.js";
 
 const resolversProyecto = {
 
