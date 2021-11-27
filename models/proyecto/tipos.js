@@ -1,6 +1,6 @@
 import { gql } from "apollo-server-express";
 
-const tipoProyecto = gql`
+const tiposProyecto = gql`
 
   scalar Date
 
@@ -24,7 +24,9 @@ const tipoProyecto = gql`
       estado: Enum_EstadoProyecto!
       fase: Enum_FaseProyecto!
       lider: Usuario!
-      objetivos:[Objetivo]
+      objetivos: [Objetivo]
+      avances: [Avance]
+      inscripciones: [Inscripcion]
   }
 
   type Query {
@@ -45,4 +47,4 @@ const tipoProyecto = gql`
   }
 `;
 
-export { tipoProyecto };
+export { tiposProyecto };

@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import { Enum_EstadoInscripcion } from "../enums/enums.js";
 import { ProyectosModel } from "../proyecto/proyecto.js";
 import { UserModel } from "../usuario/usuario.js";
 
@@ -16,12 +15,12 @@ const InscripcionSchema = new Schema({
 
     fechaIngreso: {
         type: Date,
-        required: true,
+        required: false,
     },
 
     fechaEgreso: {
         type: Date,
-        required: true,
+        required: false,
     },
 
     proyecto: {
@@ -37,6 +36,6 @@ const InscripcionSchema = new Schema({
     }
 });
 
-const InscripcionModel = model("incripcion", InscripcionSchema, "inscripciones");
+const InscripcionModel = model("inscripcion", InscripcionSchema, "inscripciones");
 
 export { InscripcionModel};
