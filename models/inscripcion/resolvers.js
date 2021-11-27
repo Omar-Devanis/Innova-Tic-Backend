@@ -21,7 +21,7 @@ const resolversInscripciones = {
             inscripcionAprobada = await InscripcionModel.findByIdAndUpdate(args.id, {
                 estado: "ACEPTADO",
                 fechaIngreso: Date.now(),
-            });
+            }, { new: true });
             return inscripcionAprobada;
         },
     },
