@@ -1,7 +1,7 @@
 import {gql} from 'apollo-server-express';
 
 const typeDefs = gql`
-
+../models/usuario/types.js
     scalar Date
 
     enum Enum_rolUser{

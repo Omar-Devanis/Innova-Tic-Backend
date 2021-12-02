@@ -1,5 +1,5 @@
-import { proyectModel } from '../models/proyect.js';
-import {userModel} from './../models/user.js';
+import { proyectModel } from '../models/proyecto/proyect.js';
+import {userModel} from '../models/usuario/user.js';
 
 const resolvers ={
     Query:{
