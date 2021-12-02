@@ -6,8 +6,7 @@ const { Schema, model } = mongoose;
 const proyectSchema = new Schema ({
     nombre : {
         type:String,
-        required:true,
-        unique:true
+        required:true
     },
     presupuesto:{
         type:Number,
@@ -19,24 +18,35 @@ const proyectSchema = new Schema ({
     },
     fechaFin:{
         type:Date,
-        required:true
+        required:false
     },
     estado:{
         type:String,
-        enum:["Activo","Inactivo"],
-        default:"Inactivo"
+        enum:["ACTIVO","INACTIVO"],
+        default:"INACTIVO"
     },
     
     fase:{
         type:String,
-        enum:["Iniciado","En Desarrollo","Terminado"],
-        default:"Nulo"
+        enum:["INICIADO","EN_DESARROLLO","TERMINADO"],
+        default:"NULO"
     },
     lider:{
         type: Schema.Types.ObjectId,
-        ref:userModel, //referencia al modelo de usuarios
+        ref: userModel, //referencia al modelo de usuarios
         required:true
-    }
+    },
+    objetivo:[{
+        descripcion:{
+            type:String,
+            /* required:true */
+        },
+        tipo:{
+            type:String,
+            enum:["GENERAL","ESPECIFICO"],
+            /* required:true */
+        }
+    }]
 
 })
 
