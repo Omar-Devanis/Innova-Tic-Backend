@@ -9,7 +9,7 @@ const resolversUsuario = {
             return usuarios;
         },
         Usuario: async (parent, args) => {
-            const usuarioe = await UserModel.findOne({_d: args._id});
+            const usuarioe = await UserModel.findOne({_id: args._id});
             return usuarioe;
         },
        
