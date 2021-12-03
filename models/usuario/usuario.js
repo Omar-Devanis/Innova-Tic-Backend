@@ -10,9 +10,10 @@ const userSchema = new Schema({
         validate:{
             validator: (email) =>{
                 return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
-            }       
+            },
+            message: "El formato del correo no es valido."     
         },
-        message: "El formato del correo no es valido."
+        
         // VALIDACION EMAIL RUSTICA
         //validator: (email) =>{
         //    if(email.includes("@") && email.includes(".")) {
@@ -22,6 +23,11 @@ const userSchema = new Schema({
         //    }
         //},
         //message: "El formato del correo no es valido.",
+    },
+
+    password: {
+        type: String,
+        required: true,
     },
 
     identificacion:{
