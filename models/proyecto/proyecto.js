@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { userModel } from "../usuario/user.js";
+import { userModel } from "../usuario/usuario.js";
 
 const { Schema, model } = mongoose;
 
@@ -48,6 +48,21 @@ const proyectSchema = new Schema ({
         }
     }]
 
+},
+{   toJSON: { virtuals: true }, // So `res.json()` and other `JSON.stringify()` functions include virtuals
+    toObject: { virtuals: true } // So `console.log()` and other functions that use `toObject()` include virtuals}
+});
+
+proyectSchema.virtual('avances',{
+    ref: 'avance',
+    localField: '_id',
+    foreignField:'proyecto'
+})
+
+proyectSchema.virtual('inscripcion',{
+    ref: 'inscripcion',
+    localField: '_id',
+    foreignField:'proyecto'
 })
 
 const proyectModel = model('proyect',proyectSchema);

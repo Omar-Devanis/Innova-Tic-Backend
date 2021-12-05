@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
-import { proyectModel } from "./proyect.js";
-import { userModel } from "./user.js";
+import { proyectModel } from "../proyecto/proyecto.js";
+import { userModel } from "../usuario/usuario.js";
 
 const { Schema, model } = mongoose;
 
@@ -13,21 +13,22 @@ const inscripcionSchema = new Schema({
     estudiante:{
         type:Schema.Types.ObjectId,
         ref:userModel,
-        required:true
+        required:true,
+        unique:true
     },
     estado:{
         type:String,
-        enum:["Aceptado","Rechazado","Pendiente"],
-        default:"Pendiente",
+        enum:["ACEPTADO","RECHAZADO","PENDIENTE"],
+        default:"PENDIENTE",
         required:true
     },
     fechaIngreso:{
         type:Date,
-        required:true
+        required:false
     },
     fechaEgreso:{
         type:Date,
-        required:true
+        required:false
     }
 })
 
