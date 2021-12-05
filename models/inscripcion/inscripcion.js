@@ -36,6 +36,9 @@ const InscripcionSchema = new Schema({
     }
 });
 
-const InscripcionModel = model("inscripcion", InscripcionSchema, "inscripciones");
+
+
+
+const InscripcionModel = model("inscripcion", InscripcionSchema);
 
 export { InscripcionModel};

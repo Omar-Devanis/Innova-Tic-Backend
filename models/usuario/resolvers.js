@@ -45,6 +45,13 @@ const resolversUsuario = {
             const usuarioEliminado = await UserModel.findOneAndDelete({ _id: args._id });
             return usuarioEliminado;
         },
+
+        aceptarUsuario: async (parent,args) =>{
+            const usuarioAceptado = await UserModel.findByIdAndUpdate(args._id,{
+                estado:args.estado
+            },{new:true})
+            return usuarioAceptado;
+        },
     }
 };
 

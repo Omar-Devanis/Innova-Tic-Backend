@@ -8,7 +8,7 @@ const projectSchema = new  Schema({
     nombre: {
         type: String,
         required: true,
-        uniqued: true,
+        uniqued: false,
     },
 
     presupuesto: {
@@ -77,6 +77,6 @@ projectSchema.virtual('inscripciones', {
     foreignField: 'proyecto'
 });  
 
-const ProyectosModel = model("proyecto", projectSchema, "Proyectos");
+const ProyectosModel = model("proyect", projectSchema);
 
 export {ProyectosModel};

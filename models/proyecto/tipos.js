@@ -21,8 +21,8 @@ const tiposProyecto = gql`
       presupuesto: Float!
       fechaInicio: Date!
       fechaFin: Date!
-      estado: Enum_EstadoProyecto!
-      fase: Enum_FaseProyecto!
+      estado: Enum_EstadoProyecto
+      fase: Enum_FaseProyecto
       lider: Usuario!
       objetivos: [Objetivo]
       avances: [Avance]
@@ -39,11 +39,20 @@ const tiposProyecto = gql`
       presupuesto: Float!
       fechaInicio: Date!
       fechaFin: Date!
-      estado: Enum_EstadoProyecto!
-      fase: Enum_FaseProyecto!
+      estado: Enum_EstadoProyecto
+      fase: Enum_FaseProyecto
       lider: String!
       objetivos: [crearObjetivo]
       ):Proyecto
+
+      editEstadoProyecto(
+          _id:String!
+          estado: Enum_EstadoProyecto
+      ):Proyecto
+
+      editFaseProyecto(
+          _id:String!
+          fase: Enum_FaseProyecto):Proyecto
   }
 `;
 

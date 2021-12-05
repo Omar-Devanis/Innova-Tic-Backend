@@ -4,13 +4,13 @@ const resolversProyecto = {
 
     Query: {
         Proyectos: async (parent, args) => {
-            const proyectos = await ProyectosModel.find().populate("avances").populate("inscripciones");
+            const proyectos = await ProyectosModel.find().populate("avances").populate("inscripciones").populate("lider");
             return proyectos;
         },
     },
     Mutation: {
         crearProyecto: async (parent, args) => {
-            const usuarioCreado = await ProyectosModel.create({
+            const proyectoCreado = await ProyectosModel.create({
                 nombre: args.nombre,
                 presupuesto: args.presupuesto,
                 fechaInicio: args.fechaInicio,
@@ -20,8 +20,22 @@ const resolversProyecto = {
                 lider: args.lider,
                 objetivos: args.objetivos,
             });
-            return usuarioCreado;
+            return proyectoCreado;
         },
+
+        editEstadoProyecto: async(aprent,args) =>{
+            const estadoProyecto = await ProyectosModel.findByIdAndUpdate(args._id,{
+                estado:args.estado
+            },{new:true});
+            return estadoProyecto;
+        },
+
+        editFaseProyecto: async(aprent,args) =>{
+            const faseProyecto = await ProyectosModel.findByIdAndUpdate(args._id,{
+                fase:args.fase
+            },{new:true});
+            return faseProyecto;
+        }
     }
 };
 
