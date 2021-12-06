@@ -10,7 +10,7 @@ const resolversInscripciones = {
         },
 
         inscripcionProyecto: async(parent, args) =>{
-            const inscripcionProyecto = await InscripcionModel.find({_id:args._id}).populate("proyecto").populate("estudiante")
+            const inscripcionProyecto = await InscripcionModel.find({proyecto:args.proyecto}).populate("proyecto").populate("estudiante")
 
             return inscripcionProyecto;
         }

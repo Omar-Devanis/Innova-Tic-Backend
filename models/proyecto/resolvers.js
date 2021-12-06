@@ -7,6 +7,17 @@ const resolversProyecto = {
             const proyectos = await ProyectosModel.find().populate("avances").populate("inscripciones").populate("lider");
             return proyectos;
         },
+        proyectosLiderados: async (parent, args) =>{
+            const liderProyecto = await ProyectosModel.find({lider:args.lider}).populate("lider")
+
+            return liderProyecto;
+        },
+
+        proyectoEspecifico:async (parent, args) =>{
+            const liderProyecto = await ProyectosModel.findOne({_id:args._id}).populate("avances").populate("avances")
+
+            return liderProyecto;
+        },
     },
     Mutation: {
         crearProyecto: async (parent, args) => {
@@ -23,7 +34,7 @@ const resolversProyecto = {
             return proyectoCreado;
         },
 
-        editEstadoProyecto: async(aprent,args) =>{
+        editEstadoProyecto: async(parent,args) =>{
             const estadoProyecto = await ProyectosModel.findByIdAndUpdate(args._id,{
                 estado:args.estado
             },{new:true});

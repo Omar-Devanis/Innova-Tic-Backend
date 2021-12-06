@@ -17,6 +17,7 @@ const tiposUsuarios = gql`
   type Query {
       Usuarios: [Usuario]
       Usuario(_id: String!):Usuario
+      listaEstudiante:[Usuario]
   }
 
   type Mutation{
@@ -46,6 +47,12 @@ const tiposUsuarios = gql`
           _id:String!
           estado: Enum_EstadoUsuario
         ):Usuario
+
+      aceptarEstudiantes(
+        _id:String!
+        estado: Enum_EstadoUsuario
+      ):Usuario
+
 
   }
 `;
