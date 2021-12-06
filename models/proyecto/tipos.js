@@ -35,7 +35,8 @@ const tiposProyecto = gql`
 
         proyectosLiderados(lider:String!):[Proyecto]
     
-        proyectoEspecifico(_id:String!):Proyecto      
+        proyectoEspecifico(_id:String!):Proyecto  
+        
   }
 
   type Mutation{
@@ -48,6 +49,13 @@ const tiposProyecto = gql`
       fase: Enum_FaseProyecto
       lider: String!
       objetivos: [crearObjetivo]
+      ):Proyecto
+
+      editarProyecto(
+        _id:String!
+        nombre: String
+        presupuesto: Float
+        objetivos: [crearObjetivo]
       ):Proyecto
         
       editEstadoProyecto(

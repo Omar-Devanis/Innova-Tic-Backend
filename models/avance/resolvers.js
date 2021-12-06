@@ -1,15 +1,15 @@
-import { AvancesModel } from "./avance.js"
+import { avanceModel} from "./avance.js"
 
 
 const resolversAvance = {
     Query: {
         Avances: async (parent, args) => {
-            const avances = await AvancesModel.find().populate("proyecto").populate("creadoPor");
+            const avances = await avanceModel.find().populate("proyecto").populate("creadoPor");
             return avances;
         },
 
         filtrarAvance: async (parent, args) => {
-            const avanceFiltrado = await AvancesModel.find({proyecto: args.idProyecto})
+            const avanceFiltrado = await avanceModel.find({proyecto: args.idProyecto})
             .populate("proyecto")
             .populate("creadoPor");
 
@@ -18,14 +18,22 @@ const resolversAvance = {
     },
     Mutation: {
         crearAvance: async (parent, args) => {
-            const avanceCreado = AvancesModel.create({
-                fecha: args.fecha,
+            const avanceCreado = await avanceModel.create({
+                fecha: Date.now(),
                 descripcion: args.descripcion,
                 proyecto: args.proyecto,
                 creadoPor: args.creadoPor,
             });
             return avanceCreado;
         },
+
+        editarAvance: async ( parent, args) =>{
+            const avanceEditado = await avanceModel.findByIdAndUpdate(args._id,{
+                observaciones:args. observaciones,
+                descripcion:args.descripcion
+            },{new:true})
+            return avanceEditado;
+        }
     },
 };
 
