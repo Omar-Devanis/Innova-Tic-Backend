@@ -31,7 +31,7 @@ const server = new ApolloServer({
             }
         }
         return null;
-    }
+    },
 });
 
 const app = express();
