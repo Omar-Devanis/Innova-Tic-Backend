@@ -47,7 +47,7 @@ const resolversAutenticacion = {
         },
 
         validateToken: async (parent, args, context) =>{
-            console.log(context);
+            console.log('contexto', context);
             if(!context.userData){
                 return{
                     error: 'token no valido',
