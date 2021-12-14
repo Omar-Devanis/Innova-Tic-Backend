@@ -13,6 +13,12 @@ const resolversInscripciones = {
             const inscripcionProyecto = await InscripcionModel.find({proyecto:args.proyecto}).populate("proyecto").populate("estudiante")
 
             return inscripcionProyecto;
+        },
+
+        inscripcionEstudiante: async(parent,args) =>{
+            const proyectosInscritos = await InscripcionModel.find({estudiante:args.estudiante}).populate({path:"proyecto",populate:({path:"lider"})})
+
+            return proyectosInscritos
         }
     },
     Mutation: {
