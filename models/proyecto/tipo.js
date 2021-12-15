@@ -59,6 +59,8 @@ const tipoProyecto = gql`
             lider: String!
             objetivo:[crearObjetivo]
         ):Proyecto
+
+        editarProyecto
     }
 
 `;
