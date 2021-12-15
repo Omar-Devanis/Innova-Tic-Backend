@@ -14,7 +14,7 @@ const resolversProyecto = {
         },
 
         proyectoEspecifico:async (parent, args) =>{
-            const liderProyecto = await ProyectosModel.findOne({_id:args._id}).populate("avances").populate("avances")
+            const liderProyecto = await ProyectosModel.findOne({_id:args._id}).populate("objetivos").populate("avances").populate("lider")
 
             return liderProyecto;
         },

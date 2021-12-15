@@ -32,7 +32,7 @@ const resolversInscripciones = {
         },
         aprobarInscripcion: async (parent, args) => {
             const inscripcionAprobada = await InscripcionModel.findByIdAndUpdate(args.id, {
-                estado: args.estado,
+                estado: "ACEPTADO",
                 fechaIngreso: Date.now(),
             }, { new: true });
             return inscripcionAprobada;
