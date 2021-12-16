@@ -48,12 +48,12 @@ const projectSchema = new  Schema({
         {
             descripcion:{
                 type: String,
-                require: true,
+                require: false,
             },
             tipo:{
                 type: String,
                 enum: ["GENERAL", "ESPECIFICO"],
-                require: true,
+                require: false,
             }
         }
     ],

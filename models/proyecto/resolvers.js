@@ -26,10 +26,6 @@ const resolversProyecto = {
                 presupuesto: args.presupuesto,
                 fechaInicio: args.fechaInicio,
                 fechaFin: args.fechaFin,
-                estado: args.estado,
-                fase: args.fase,
-                lider: args.lider,
-                objetivos: args.objetivos,
             });
             return proyectoCreado;
         },

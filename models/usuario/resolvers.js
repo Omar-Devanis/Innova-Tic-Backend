@@ -59,7 +59,7 @@ const resolversUsuario = {
         aceptarEstudiantes: async(parent,args) =>{
             const estudianteAceptado = await UserModel.findByIdAndUpdate(
                 args._id,{
-                    estado:args.estado
+                    estado:"AUTORIZADO"
                 },{new:true}
             )
             return estudianteAceptado;
