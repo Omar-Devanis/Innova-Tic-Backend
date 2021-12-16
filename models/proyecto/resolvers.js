@@ -26,6 +26,7 @@ const resolversProyecto = {
                 presupuesto: args.presupuesto,
                 fechaInicio: args.fechaInicio,
                 fechaFin: args.fechaFin,
+                lider: args.lider,
             });
             return proyectoCreado;
         },
