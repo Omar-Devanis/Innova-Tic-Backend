@@ -1,6 +1,18 @@
 import { ProyectosModel } from "./proyecto.js";
+import {InscripcionModel} from "../inscripcion/inscripcion.js"
 
 const resolversProyecto = {
+    /* No borrar esta consulta la necesito, ya que con ella
+    realiazo la validacion si un estudiante esta inscrito en un proyecto */
+    Proyecto:{
+        inscripciones: async(parent, args, context)=>{
+            const inscripciones = await InscripcionModel.find({
+                proyecto:parent._id
+            })
+
+            return inscripciones;
+        }
+    },
 
     Query: {
         Proyectos: async (parent, args) => {
