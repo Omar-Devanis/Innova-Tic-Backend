@@ -42,6 +42,15 @@ const resolversProyecto = {
         return proyectoEditado;
         },
 
+        actualizarProyecto: async( parent,args) =>{
+            const proyectoActualizado = await ProyectosModel.findByIdAndUpdate(args._id,{
+            nombre:args.nombre,
+            presupuesto: args.presupuesto,
+        },{new:true})
+
+        return proyectoActualizado;
+        },
+
         editEstadoProyecto: async(parent,args) =>{
             const estadoProyecto = await ProyectosModel.findByIdAndUpdate(args._id,{
                 estado:args.estado

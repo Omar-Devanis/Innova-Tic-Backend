@@ -56,6 +56,12 @@ const tiposProyecto = gql`
         estado: Enum_EstadoProyecto
         fase: Enum_FaseProyecto
       ):Proyecto
+
+      actualizarProyecto(
+        _id:String!
+        nombre: String
+        presupuesto: Float
+      ):Proyecto
         
       editEstadoProyecto(
           _id:String!

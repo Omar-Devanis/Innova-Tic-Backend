@@ -28,6 +28,11 @@ const tiposAvance = gql`
             observaciones: [String]
             descripcion:String
         ): Avance
+
+        agregarObservaciones(
+            _id:ID!
+            observaciones: [String]
+        ): Avance
     }
   
 `;
