@@ -33,7 +33,14 @@ const resolversAvance = {
                 descripcion:args.descripcion
             },{new:true})
             return avanceEditado;
-        }
+        },
+
+            agregarObservaciones: async ( parent, args) =>{
+            const observacionAgregada = await avanceModel.findByIdAndUpdate(args._id,{
+                observaciones:args. observaciones,
+            },{new:true})
+            return observacionAgregada;
+        },
     },
 };
 
