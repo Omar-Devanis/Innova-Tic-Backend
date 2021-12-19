@@ -18,7 +18,7 @@ const tiposProyecto = gql`
   type Proyecto {
       _id: ID!
       nombre: String!
-      presupuesto: Float!
+      presupuesto: String!
       fechaInicio: Date!
       fechaFin: Date!
       estado: Enum_EstadoProyecto
@@ -42,7 +42,7 @@ const tiposProyecto = gql`
   type Mutation{
       crearProyecto(
       nombre: String!
-      presupuesto: Float!
+      presupuesto: String!
       fechaInicio: Date!
       fechaFin: Date!
       lider: String!
@@ -51,7 +51,7 @@ const tiposProyecto = gql`
       editarProyecto(
         _id:String!
         nombre: String
-        presupuesto: Float
+        presupuesto: String
         objetivos: [crearObjetivo]
         estado: Enum_EstadoProyecto
         fase: Enum_FaseProyecto
@@ -60,7 +60,7 @@ const tiposProyecto = gql`
       actualizarProyecto(
         _id:String!
         nombre: String
-        presupuesto: Float
+        presupuesto: String
       ):Proyecto
         
       editEstadoProyecto(
