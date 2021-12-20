@@ -1,4 +1,5 @@
 import  mongoose from "mongoose";
+import { ProyectosModel } from "../proyecto/proyecto.js";
 
 const { Schema, model } = mongoose
 
@@ -11,6 +12,11 @@ const objetivoSchema = new Schema({
         type:String,
         enum:["GENERAL","ESPECIFICO"],
         required:true,
+    },
+    proyecto: {
+        type: Schema.Types.ObjectId,
+        ref: ProyectosModel,
+        required: true,
     },
 });
 
