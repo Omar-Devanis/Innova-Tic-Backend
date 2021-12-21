@@ -2,7 +2,10 @@ import { ObjetivosModel } from "./objetivos.js";
 
 const resolversObjetivo = {
     Query: {
-
+        Objetivos: async (parent, args) => {
+            const objetivos = await ObjetivosModel.find();
+            return objetivos;
+        },
     },
 
     Mutation: {
@@ -11,7 +14,7 @@ const resolversObjetivo = {
                 descripcion: args.descripcion,
                 tipo: args.tipo,
                 proyecto: args.proyecto,
-            }, { new: true });
+            });
             return objetivoCreado;
         },
     }

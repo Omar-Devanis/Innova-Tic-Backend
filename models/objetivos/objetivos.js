@@ -5,13 +5,13 @@ const { Schema, model } = mongoose
 
 const objetivoSchema = new Schema({
     descripcion:{
-        type:String,
-        required:true,
+        type: String,
+        required: true,
     },
     tipo: {
-        type:String,
-        enum:["GENERAL","ESPECIFICO"],
-        required:true,
+        type: String,
+        enum: ["GENERAL","ESPECIFICO"],
+        required: true,
     },
     proyecto: {
         type: Schema.Types.ObjectId,

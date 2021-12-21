@@ -44,19 +44,6 @@ const projectSchema = new  Schema({
         ref: UserModel,
     },
 
-    objetivos: [
-        {
-            descripcion:{
-                type: String,
-                require: false,
-            },
-            tipo:{
-                type: String,
-                enum: ["GENERAL", "ESPECIFICO"],
-                require: false,
-            }
-        }
-    ],
     
 },
 {

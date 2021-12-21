@@ -4,17 +4,6 @@ const tiposProyecto = gql`
 
   scalar Date
 
-  type Objetivo{ 
-      _id: ID!
-      descripcion: String!
-      tipo: Enum_TipoObjetivo!
-  }
-
-  input crearObjetivo{
-      descripcion: String!
-      tipo: Enum_TipoObjetivo!
-  }
-
   type Proyecto {
       _id: ID!
       nombre: String!
@@ -52,7 +41,6 @@ const tiposProyecto = gql`
         _id:String!
         nombre: String
         presupuesto: String
-        objetivos: [crearObjetivo]
         estado: Enum_EstadoProyecto
         fase: Enum_FaseProyecto
       ):Proyecto
