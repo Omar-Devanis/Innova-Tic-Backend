@@ -11,7 +11,7 @@ type Objetivo{
 type Query {
 
     Objetivos: [Objetivo]
-    
+    objetivosProyecto:(proyecto:String!):[Objetivo]
 }
 
 type Mutation{

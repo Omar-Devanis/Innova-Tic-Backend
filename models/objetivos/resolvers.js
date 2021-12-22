@@ -6,6 +6,11 @@ const resolversObjetivo = {
             const objetivos = await ObjetivosModel.find();
             return objetivos;
         },
+        objetivosProyecto: async (parent, args) =>{
+            const objetivosproyecto = await ObjetivosModel.find({proyecto:args.proyecto})
+
+            return objetivosproyecto;
+        },
     },
 
     Mutation: {
